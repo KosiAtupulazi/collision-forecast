@@ -1,6 +1,8 @@
 #datasets
 final_dataset/
 frames/
+frames_old/
+labels_old/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
