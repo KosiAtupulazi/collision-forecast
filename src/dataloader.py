@@ -1,4 +1,4 @@
-# Defines the ClipDataset class
+# Defines the CollisionForecastDataset class
 
 import torch
 from torch.utils.data import Dataset

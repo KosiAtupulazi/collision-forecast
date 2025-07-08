@@ -22,7 +22,7 @@ for dataset_split in ['train', 'val', 'test']:
     clip_labels = [] #output of extracted clips and their labels; will write to csv later
     print(df.head())
 
-    for event in ['crash']: 
+    for event in ['crash', 'no_crash']: 
         eventfolder_path = os.path.join(video_dir, event) #the path to each event
 
         for filename in os.listdir(eventfolder_path):
