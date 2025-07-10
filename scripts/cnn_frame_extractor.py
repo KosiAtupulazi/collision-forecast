@@ -104,7 +104,7 @@ for dataset_split in ['train', 'val', 'test']:
             video_capture.release()
 
     csv_save_path = os.path.join(output_dir, f"{dataset_split}_clip_labels.csv")
-    label_df = pd.DataFrame(clip_labels, columns=["clip_name", "label"])
+    label_df = pd.DataFrame(clip_labels, columns=pd.Index(["clip_name", "label"]))
     label_df.to_csv(csv_save_path, index=False)
 
     print(f"Finished extracting clips for: {dataset_split}")

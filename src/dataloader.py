@@ -32,18 +32,21 @@ class CollisionForecastDataset(Dataset):
         if self.transform:
             clip = self.transform(clip) # Apply transform if provided (e.g normalization)
 
-        if row['label'] == 'crash':
-            label = 1
+        # For regression: return time_of_alert value
+        # Check if time_of_alert column exists, otherwise use a default value
+        if 'time_of_alert' in row:
+            time_value = row['time_of_alert']
         else:
-            label = 0
+            # If no time_of_alert column, use label as proxy (crash = 0 seconds, no_crash = some positive value)
+            time_value = 0.0 if row['label'] == 'crash' else 5.0  # Default values
         
         # clip 
         # - float32 because it normalizes the pixels to b/w 0, 1 rather than 0-255, which allows for blending
         #   and helps the model understand better
-        # label
-        # - has to be a whole(long) number for crosentropy classification
+        # time_value
+        # - float32 for regression (continuous value)
 
-        return torch.tensor(clip, dtype=torch.float32), torch.tensor(label, dtype=torch.long) #returns the clip and the label in pytorch format
+        return torch.tensor(clip, dtype=torch.float32), torch.tensor(time_value, dtype=torch.float32) #returns the clip and the time value in pytorch format
         
     def __len__(self):
         return len(self.data) #returns the length of the dataset
