@@ -21,7 +21,7 @@ Frames are extracted using OpenCV and stacked into tensors for model input
 
 # Model
 Architecture: VideoMAE
-[Video Masked Autoencoder for Self-supervised Video Pretraining (Fang et al., 2022) (https://doi.org/10.48550/arXiv.2203.12602)]
+Video Masked Autoencoder for Self-supervised Video Pretraining (Fang et al., 2022) (https://doi.org/10.48550/arXiv.2203.12602)
 Pretrained transformer that models spatiotemporal patterns in video
 Fine-tuned to perform regression on crash likelihood
 Input shape: (batch_size, channels=3, frames=16, height, width)
