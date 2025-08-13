@@ -17,7 +17,7 @@ from dataloader import CollisionForecastDataset
 
 # %%
 def train_model(model, optimizer, criterion, device_param, train_loader, val_loader, FORCE_RETRAIN, epochs=10):
-    model_name = "model"
+    model_name = model.__class__.__name__.lower()
     checkpoint_dir = "checkpoints"
     os.makedirs(checkpoint_dir, exist_ok=True)
 
